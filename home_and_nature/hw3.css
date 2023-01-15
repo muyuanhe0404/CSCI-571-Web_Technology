@@ -1,0 +1,35 @@
+.below-title1 {
+    border: none;
+    color: rgb(102, 102, 95);
+    margin-right:25px;
+    margin-left:120px;
+    text-decoration: none;
+    font-style: italic;
+    text-align: center;
+    line-height:1%
+  }
+.below-title {
+    border: none;
+    color: rgb(102, 102, 95);
+    margin-right:25px;
+    text-decoration: none;
+    font-style: italic;
+    text-align: center;
+    line-height: 1%;
+  }
+.home-title{
+    font-family:Georgia;
+    font-size: 62px;
+    font-weight: 500;
+    line-height: 1%;
+    text-align: center;
+}
+div {
+    width:750px;
+    border-color:black;
+    border-style:groove;
+    margin:auto;
+    margin-top: 40px;
+    padding-bottom: 30px;
+
+  }
