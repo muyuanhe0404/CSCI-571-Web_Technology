@@ -24,7 +24,7 @@
     line-height: 1%;
     text-align: center;
 }
-div {
+.upper-div {
     width:750px;
     border-color:black;
     border-style:groove;
@@ -33,3 +33,28 @@ div {
     padding-bottom: 30px;
 
   }
+  .lower-div {
+    float: left;
+    width: 70%;
+    margin-top: 30px;
+    margin-left: 200px;
+
+  }
+.crop{
+  width: 430px;
+  height: 450px;
+  object-fit:cover;
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+.nature{
+  font-family:georgia;
+  font-size: 30px;
+  font-style:normal;
+  font-weight: 300;
+  line-height: 10%;
+}
+.empty{
+  margin-top: 60px;
+  display:hide;
+}
