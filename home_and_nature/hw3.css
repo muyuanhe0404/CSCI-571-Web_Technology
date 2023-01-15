@@ -1,3 +1,7 @@
+.scroll {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
 .below-title1 {
     border: none;
     color: rgb(102, 102, 95);
@@ -31,13 +35,15 @@
     margin:auto;
     margin-top: 40px;
     padding-bottom: 30px;
+    position:static;
 
   }
   .lower-div {
-    float: left;
-    width: 70%;
+    width: 50%;
     margin-top: 30px;
-    margin-left: 200px;
+    margin-left: 600px;
+    margin-bottom: 30px;
+    position:relative;
 
   }
 .crop{
@@ -57,4 +63,34 @@
 .empty{
   margin-top: 60px;
   display:hide;
+}
+.author-credit{
+  font-family:Georgia;
+  font-size: 11px;
+  line-height: 1%;
+  text-align: center;
+  font-style: italic;
+}
+.at-div{
+  position:relative;
+  margin:auto;
+}
+.social {
+  margin:auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+.crop-social1{
+  width: 21px;
+  height: 21px;
+  margin-left: 1000px;
+  margin-right: 20px;
+  object-fit:cover;
+}
+.crop-social{
+  width: 21px;
+  height: 21px;
+  object-fit:cover;
+  margin-right: 20px;
 }
