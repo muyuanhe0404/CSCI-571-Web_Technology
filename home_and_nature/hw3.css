@@ -5,8 +5,8 @@
 .below-title1 {
     border: none;
     color: rgb(102, 102, 95);
-    margin-right:3%;
-    margin-left:17%;
+    margin-right:25px;
+    margin-left:120px;
     text-decoration: none;
     font-style: italic;
     text-align: center;
@@ -15,7 +15,7 @@
 .below-title {
     border: none;
     color: rgb(102, 102, 95);
-    margin-right:3%;
+    margin-right:25px;
     text-decoration: none;
     font-style: italic;
     text-align: center;
@@ -23,28 +23,26 @@
   }
 .home-title{
     font-family:Georgia;
-    font-size:370%;
-    font-weight:500;
+    font-size: 62px;
+    font-weight: 500;
     line-height: 1%;
-    margin-bottom: 6%;
     text-align: center;
 }
 .upper-div {
-    width:35%;
+    width:750px;
     border-color:black;
     border-style:groove;
     margin:auto;
-    margin-top: 1%;
-    padding-bottom: 1%;
-    margin-bottom: 5%;
-    position:relative;
+    margin-top: 40px;
+    padding-bottom: 30px;
+    position:static;
 
   }
   .lower-div {
-    width: 41.5%;
-    margin-left: 29%;
-    margin-bottom: 2%;
-    position:relative;
+    width: 50%;
+    margin-top: 30px;
+    margin-left: 600px;
+    margin-bottom: 30px;
 
   }
 .crop{
@@ -73,7 +71,6 @@
   font-style: italic;
 }
 .at-div{
-  position:relative;
   margin:auto;
 }
 .social {
