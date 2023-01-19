@@ -85,9 +85,11 @@
 }
 .at-div{
   margin:auto;
+  margin-left: 80px;
 }
 .social {
   margin:auto;
+  margin-left: -12px;
   margin-top: 30px;
   margin-bottom: 30px;
 
