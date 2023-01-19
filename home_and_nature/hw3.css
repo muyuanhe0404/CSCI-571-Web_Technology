@@ -5,8 +5,28 @@
   overflow-x: hidden;
 }
 .below-title1 {
+  border: none;
+  color: rgb(102, 102, 95);
+  margin-right:25px;
+  margin-left:120px;
+  text-decoration: none;
+  font-style: italic;
+  text-align: center;
+  line-height:1%
+}
+.below-title1-h {
     border: none;
-    color: rgb(102, 102, 95);
+    color: rgb(8, 8, 7);
+    margin-right:25px;
+    margin-left:120px;
+    text-decoration: none;
+    font-style: italic;
+    text-align: center;
+    line-height:1%
+  }
+  .below-title1-n {
+    border: none;
+    color: rgb(8, 8, 8);
     margin-right:25px;
     margin-left:120px;
     text-decoration: none;
@@ -32,8 +52,6 @@
 }
 .all {
   width:2000px;
-  border-color:black;
-  border-style:groove;
   margin:auto;
   position:static;
   resize: none;
@@ -50,8 +68,6 @@
 
   }
   .lower-div {
-    border-color:black;
-    border-style:groove;
     width: 880px;
     margin-top: 30px;
     margin-left: 600px;
