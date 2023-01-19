@@ -26,13 +26,12 @@
   }
   .below-title1-n {
     border: none;
-    color: rgb(8, 8, 8);
+    color: rgb(10, 10, 10);
     margin-right:25px;
-    margin-left:120px;
     text-decoration: none;
     font-style: italic;
     text-align: center;
-    line-height:1%
+    line-height: 1%;
   }
 .below-title {
     border: none;
