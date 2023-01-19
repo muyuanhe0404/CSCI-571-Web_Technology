@@ -29,7 +29,7 @@
     text-align: center;
 }
 .upper-div {
-    min-width:750px;
+    width:750px;
     border-color:black;
     border-style:groove;
     margin:auto;
@@ -46,8 +46,8 @@
 
   }
 .crop{
-  min-width: 430px;
-  min-height: 450px;
+  width: 430px;
+  height: 450px;
   object-fit:cover;
   margin-left: 5px;
   margin-bottom: 3px;
