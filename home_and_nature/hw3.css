@@ -1,6 +1,8 @@
 .scroll {
   overflow-y: scroll;
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 .below-title1 {
     border: none;
@@ -28,18 +30,29 @@
     line-height: 1%;
     text-align: center;
 }
+.all {
+  width:2000px;
+  border-color:black;
+  border-style:groove;
+  margin:auto;
+  position:static;
+  resize: none;
+}
 .upper-div {
     width:750px;
     border-color:black;
     border-style:groove;
-    margin:auto;
+    margin-left: 665px;
     margin-top: 40px;
     padding-bottom: 30px;
     position:static;
+    resize: none;
 
   }
   .lower-div {
-    width: 50%;
+    border-color:black;
+    border-style:groove;
+    width: 880px;
     margin-top: 30px;
     margin-left: 600px;
     margin-bottom: 30px;
@@ -88,7 +101,7 @@
 }
 .crop-social{
   width: 21px;
-  height: 21px;
+  height: 20px;
   object-fit:cover;
   margin-right: 20px;
 }
