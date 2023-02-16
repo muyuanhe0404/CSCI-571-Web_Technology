@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+        <title>ticketmaster_Search</title>
+        <link rel="stylesheet" href="../static/css/hw6.css" /> 
+  </head>
+
+    <body>
+        <div class="scroll">
+            <div class="all">
+                <div class="upper-div">
+                    <div class="search_title">
+                        <p class="home-title">
+                            Events search
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="search_content">
+                        <form>
+                            <label for="label">Keyword<span class="asterisk">*</span> </label><br>
+                            <input type="text" id="keyword" name="keyword"required><br>
+
+                            <label for="label">Distance (miles)</label>
+                            <label for="catagory">Catagory<span class="asterisk">*</span></label><br>
+                            <input type="number" id="distance" name="distance" placeholder = "10" min = "0">
+                            <select name="catagory" id="catagory" required>
+                                <option value="Default" selected>Default</option>
+                                <option value="Music">Music</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Arts">Arts</option>
+                                <option value="Theatre">Theatre</option>
+                                <option value="Film">Film</option>
+                            </select>
+                            <label for="label">Location<span class="asterisk">*</span></label>
+                            <input type="checkbox" id="check_content" name="Auto" value="Auto"  >
+                            <label for="label_check">Auto-Detect Location</label><br>
+                            <script src = "../static/js/jquery.js"></script>
+                            <script>
+                                $(function(){
+                                    $("#check_content").click(function(){
+                                        var x = $("#check_content").is(':checked');
+                                        if (x == true){
+                                            $(this).parents(".search_content").find("#location").hide()
+                                        }else{
+                                            $(this).parents(".search_content").find("#location").show()
+                                        }
+                                    });
+                                })
+                            </script>
+                            <input type="text" id="location" name="location" required><br>
+
+                            <button id="search" type="submit">search</button>
+                            <script>
+                                function ClearFields() {
+                                    document.getElementById("keyword").value = "";
+                                    document.getElementById("distance").value = "";
+                                    document.getElementById("catagory").value = "Default";
+                                    document.getElementById("check_content").value = "";
+                                    $('input[type=checkbox]').prop('checked',false);
+                                    $('input[id=location]').show();
+                                    document.getElementById("location").value = "";
+                               }
+                            </script>
+                            <button type = "button" id="clear" onclick="ClearFields();">clear</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,181 @@
+.scroll {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .all {
+    border-color:white;
+    border-style:groove;
+    width:100%;
+    margin:auto;
+    position:static;
+    resize: none;
+  }
+  body {
+    background-image: url('../img/background.jpg');
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+  .upper-div {
+    width:35%;
+    border-color:rgb(248, 245, 245);
+    border-radius: 25px;
+    background: transparent;
+    background-color: rgba(184, 178, 178, 0.185);
+    backdrop-filter: blur(5px);
+    border-style:groove;
+    margin:auto;
+    margin-top: 3%;
+    resize: none;
+
+  }
+  .search_title {
+    border-color:rgb(248, 245, 245);
+    margin:auto;
+    resize: none;
+  }
+  .home-title {
+    font-family:Georgia;
+    color: rgb(223, 223, 212);
+    font-size: 200%;
+    line-height: 1%;
+    text-align: center;
+}
+   hr{
+    
+    width:90%;
+    margin-bottom: 5%;
+}  
+.search_content {
+    border-color:rgb(248, 245, 245);
+    margin:auto;
+    resize: none;
+  }
+
+  label[for=label] {
+    border: none;
+    color: rgba(123, 190, 245, 0.92);
+    text-decoration: none;
+    font-style: Georgia;
+    margin:auto;
+    margin-left: 5%;
+    margin-bottom: 5%;
+  }
+  label[for=label_check] {
+    border: none;
+    color: rgba(230, 234, 238, 0.92);
+    text-decoration: none;
+    font-style: Georgia;
+    margin:auto;
+  }
+  label[for=catagory] {
+    border: none;
+    color: rgba(123, 190, 245, 0.92);
+    text-decoration: none;
+    font-style: Georgia;
+    margin:auto;
+    margin-left: 31%;
+    margin-bottom: 5%;
+  }
+  input#content {
+    border-color:rgb(248, 245, 245);
+    background: transparent;
+    border-radius: 7px;
+    border-style:groove;
+  }
+  input#keyword {
+    width:90%;
+    border-color:rgb(169, 165, 165);
+    background: transparent;
+    border-radius: 7px;
+    border-style:groove;
+    margin-left:5%;
+    font-size:100%;
+    padding:1%;
+    margin-bottom:2%;
+    margin-top:1%;
+    color:white;
+  }
+  input#distance {
+    width:30%;
+    border-color:rgb(169, 165, 165);
+    background: transparent;
+    border-radius: 7px;
+    border-style:groove;
+    margin-left:5%;
+    font-size:100%;
+    padding:1%;
+    margin-bottom:2%;
+    margin-top:1%;
+    color:white;
+  }
+  select#catagory {
+    width:40%;
+    border-color:rgb(169, 165, 165);
+    background: transparent;
+    border-radius: 7px;
+    border-style:groove;
+    margin-left:18%;
+    font-size:100%;
+    padding:1%;
+    margin-bottom:2%;
+    margin-top:1%;
+    color:white;
+  }
+  input#location {
+    width:90%;
+    border-color:rgb(169, 165, 165);
+    background: transparent;
+    border-radius: 7px;
+    border-style:groove;
+    margin-left:5%;
+    font-size:100%;
+    padding:1%;
+    margin-bottom:2%;
+    margin-top:1%;
+    color:white;
+  }
+  .asterisk{
+    color: red;
+  }
+  button#search{
+    background-color: #ef5219;
+    border-radius: 7px;
+    border-style:groove;
+    border-color:rgb(248, 245, 245);
+    color: white;
+    padding: 2% 5%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 100%;
+    margin: 4% 2%;
+    cursor: pointer;
+    border-bottom:  5px solid #ce4614;
+  }
+  button#clear{
+    background-color: #408edb;
+    border-radius: 7px;
+    border-style:groove;
+    border-color:rgb(248, 245, 245);
+    color: white;
+    padding: 2% 5%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 100%;
+    margin: 4% 2%;
+    cursor: pointer;
+    border-bottom:  5px solid #3678ba;
+  }
+  .Button:hover{
+    cursor: hand; 
+    cursor: pointer;
+    }
+
+  
+
+
+

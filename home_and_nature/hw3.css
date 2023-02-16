@@ -50,6 +50,8 @@
     text-align: center;
 }
 .all {
+  border-color:black;
+  border-style:groove;
   width:2000px;
   margin:auto;
   position:static;
@@ -59,7 +61,7 @@
     width:750px;
     border-color:black;
     border-style:groove;
-    margin-left: 665px;
+    margin-left: 445px;
     margin-top: 40px;
     padding-bottom: 30px;
     position:static;
@@ -67,9 +69,11 @@
 
   }
   .lower-div {
+    border-color:black;
+    border-style:groove;
     width: 880px;
     margin-top: 30px;
-    margin-left: 600px;
+    margin-left: 380px;
     margin-bottom: 30px;
 
   }
@@ -99,12 +103,16 @@
   font-style: italic;
 }
 .at-div{
+  border-color:black;
+  border-style:groove;
   margin:auto;
-  margin-left: 80px;
+  margin-left: -365px;
 }
 .social {
+  border-color:black;
+  border-style:groove;
   margin:auto;
-  margin-left: -12px;
+  margin-left: -8px;
   margin-top: 30px;
   margin-bottom: 30px;
 
@@ -112,7 +120,7 @@
 .crop-social1{
   width: 21px;
   height: 21px;
-  margin-left: 1000px;
+  margin-left: 770px;
   margin-right: 20px;
   object-fit:cover;
 }
