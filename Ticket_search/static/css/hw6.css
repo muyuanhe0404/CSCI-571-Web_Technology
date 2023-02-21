@@ -94,7 +94,9 @@ body {
 .venue_info {
   width: 65%;
   /* border-color: rgb(248, 245, 245); */
-  border-radius: 25px;
+  border-radius: 25px;  
+  outline: 0.1vw solid black;
+  outline-offset: -0.6vw;
   background: white;
   border-style: none;
   margin: auto;
