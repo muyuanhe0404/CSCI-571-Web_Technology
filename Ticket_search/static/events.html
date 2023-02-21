@@ -29,7 +29,7 @@
                         <label for="label">Distance (miles)</label>
                         <label for="catagory">Catagory<span class="asterisk">*</span></label><br>
                         <input type="number" id="distance" name="distance" placeholder="10" min="0" value="10">
-                        <select name="catagory" id="catagory" value= ""required>
+                        <select name="catagory" id="catagory" value="" required>
                             <option value="gotyou" selected>Default</option>
                             <option value="KZFzniwnSyZfZ7v7nJ">Music</option>
                             <option value="KZFzniwnSyZfZ7v7nE">Sports</option>
@@ -39,7 +39,7 @@
                             <option value="KZFzniwnSyZfZ7v7n1">Miscellaneous</option>
                         </select>
                         <label for="label">Location<span class="asterisk">*</span></label>
-                        <input type="checkbox" id="check_content" name="Auto" value="Auto" >
+                        <input type="checkbox" id="check_content" name="Auto" value="Auto">
                         <label for="label_check">Auto-Detect Location</label><br>
                         <script src="./js/jquery.js"></script>
                         <script>
@@ -55,10 +55,10 @@
                                     } else {
                                         $(this).parents(".search_content").find("#location").show()
                                         document.getElementById("check").value = "0";
-                                        console.log("before empty location",document.getElementById("location").value)
+                                        console.log("before empty location", document.getElementById("location").value)
                                         console.log("check now", document.getElementById("check").value)
                                         document.getElementById("location").value = "";
-                                        console.log("after emptylocation",document.getElementById("location").value)
+                                        console.log("after emptylocation", document.getElementById("location").value)
                                     }
                                 });
                             })
@@ -68,7 +68,7 @@
                             <p class="check" id="check">check</p>
                         </div>
                         <!-- <button id="search" type="button">search</button> -->
-                        <button id="search" type="submit" >search</button>
+                        <button id="search" type="submit">search</button>
                         <script>
                             function ClearFields() {
                                 document.getElementById("keyword").value = "";
@@ -92,7 +92,7 @@
                     <p class="event_name">
 
                     </p>
-                <!-- <hr> -->
+                    <!-- <hr> -->
                 </div>
                 <div class="column">
                     <div class="event_date">
@@ -107,7 +107,8 @@
                         <p class="e-title">
                             Artist/Team
                         </p>
-                        <a class="e-text" id="eart" href="www.google.com" target="_blank" style="color:rgb(51, 177, 224)">
+                        <a class="e-text" id="eart" href="www.google.com" target="_blank"
+                            style="color:rgb(51, 177, 224)">
                             some event name
                         </a>
                     </div>
@@ -140,17 +141,18 @@
                             Ticket status
                         </p>
                         <div class="ticket-color" style="display:inline-block;margin-left:5%;padding-right: 2%;">
-                           <p class="e-text" id="eticket" >
-                            some status
-                        </p> 
+                            <p class="e-text" id="eticket">
+                                some status
+                            </p>
                         </div>
-                        
+
                     </div>
                     <div class="event_buy">
                         <p class="e-title">
                             Buy Ticket At:
                         </p>
-                        <a class="e-text" id="ebuy" href="www.google.com" target="_blank" style="color:rgb(51, 177, 224)">
+                        <a class="e-text" id="ebuy" href="www.google.com" target="_blank"
+                            style="color:rgb(51, 177, 224)">
                             Ticketmaster
                         </a>
                     </div>
@@ -179,23 +181,33 @@
                             <p class="venue_name" id="venue_address">
                                 Address:
                             </p>
-
                         </div>
-                        <div class="vertical">
+                        <div id="verticle" style="float:left;width:30%;padding-bottom:10%;padding-top: 3%;">
+                            <div class="vertical">
+                            </div>
                         </div>
                         <div class="more_venue" id=v-add>
-                            <a class="more_link" href="www.google.com" target="_blank" style = "color:rgb(51, 177, 224);text-decoration:none">
+                            <a class="more_link" href="www.google.com" target="_blank"
+                                style="color:rgb(51, 177, 224);text-decoration:none">
                                 More events at this venue
                             </a>
                         </div>
                     </div>
+                    <div id="on-map" style="float:left;padding-bottom:2%;padding-top: 5%;"></div>
                     <a class="on_googlemap" href="https://www.google.com/maps" target="_blank"
                         style="margin-left: 20%; margin-bottom:3% ;color:rgb(51, 177, 224);text-decoration:none">
                         Open in Google Maps
                     </a>
                 </div>
+                <!-- <div class="more_venue" id=v-add>
+                        <a class="more_link" href="www.google.com" target="_blank"
+                            style="color:rgb(51, 177, 224);text-decoration:none">
+                            More events at this venue
+                        </a>
+                    </div> -->
             </div>
         </div>
+    </div>
     </div>
 
 </body>
@@ -217,14 +229,14 @@
             const distanceVal = $("#distance").val();
             const keyword = $("#keyword").val();
             var cata = $("#catagory").val()
-            if (cata === "gotyou"){
+            if (cata === "gotyou") {
                 cata = ""
             }
-            if($("#keyword").val() === ""){
+            if ($("#keyword").val() === "") {
                 cata = "just to force enter"
             }
             const catagory = cata
-            console.log("what's the catagory: ",catagory)
+            console.log("what's the catagory: ", catagory)
             const location = $("#location").val();
             const check = $("#check").val();
             console.log("distanceVal", distanceVal);
@@ -288,57 +300,67 @@
         });
     });
     function getEventsData(id) {
-        try{
-        //alert('called');
-        console.log('id', id);
-        console.log('allEventsData', allEventsData);
-        const eventObj = allEventsData.find((res) => res.id == id)
-        console.log('eventObj', eventObj);
+        try {
+            //alert('called');
+            console.log('id', id);
+            console.log('allEventsData', allEventsData);
+            const eventObj = allEventsData.find((res) => res.id == id)
+            console.log('eventObj', eventObj);
 
-        $('.event_info').css('display', 'block');
-        $('.show-venue').css('display', 'block');
-        document.getElementById("venue-info").style.display = "none";
-        $('.event_name').text(eventObj.name);
-        $('#eart').text(eventObj.name);
-        $('#eart').attr('href', eventObj._embedded.attractions[0].url);
-        $('#edate').text(eventObj.dates.start.localDate + " " + eventObj.dates.start.localTime);
-        $('#evenue').text(eventObj._embedded.venues[0].name);
-        $('#egenres').text(eventObj._embedded.attractions[0].classifications[0].segment.name + "|" + eventObj._embedded.attractions[0].classifications[0].genre.name + "|" + eventObj._embedded.attractions[0].classifications[0].subGenre.name + "|" + eventObj._embedded.attractions[0].classifications[0].type.name + "|" + eventObj._embedded.attractions[0].classifications[0].subType.name);
-        $('#eprice').text(eventObj.priceRanges[0].min + " - " + eventObj.priceRanges[0].max + "USD");
-        $('#eticket').text(eventObj.dates.status.code);
-        $('#ebuy').attr('href', eventObj.url);
-        $('#eimg').attr('src', eventObj.seatmap.staticUrl);
-        $('#v-name').text(eventObj._embedded.venues[0].name);
-        $('#v-img').attr('src', eventObj._embedded.venues[0].images[0].url);
-        $('.venue_address').text("Address: " + eventObj._embedded.venues[0].address.line1 + ", " + eventObj._embedded.venues[0].state.stateCode + " " + eventObj._embedded.venues[0].postalCode);
-        $('.more_link').attr('href', eventObj._embedded.venues[0].url);
-        //$('.on_googlemap').attr('href', "https://www.google.com/maps");
-        var country = (eventObj._embedded.venues[0].country.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
-        var state = (eventObj._embedded.venues[0].state.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
-        var city = (eventObj._embedded.venues[0].city.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
-        var add = (eventObj._embedded.venues[0].address.line1).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
-        $('.on_googlemap').attr('href', "https://www.google.com/maps/search/?api=1&query=" + add + "%2C%20" + city + "%2C%20" + state + "%2C%20" + country);
-        $(function() {
-            var text = $('#eticket').text().toLowerCase()
-            var color;
-            console.log("text",text);
-            switch (text) {
-             case 'onsale': // change here
-                color = "green";
-                break;
-             case 'rescheduled': // and change here
-                color = "orange";
-                break;
-            case 'offsale':
-                color = "red";
-            default :
-                //color = "black";
-            }
-            $('.ticket-color').css('background', color);
-        });
-    }catch(err){
-        console.log("something missing I guess",err)
-    }
+            $('.event_info').css('display', 'block');
+            $('.show-venue').css('display', 'block');
+            document.getElementById("venue-info").style.display = "none";
+            $('.event_name').text(eventObj.name);
+            $('#eart').text(eventObj.name);
+            $('#eart').attr('href', eventObj._embedded.attractions[0].url);
+            $('#edate').text(eventObj.dates.start.localDate + " " + eventObj.dates.start.localTime);
+            $('#evenue').text(eventObj._embedded.venues[0].name);
+            $('#egenres').text(eventObj._embedded.attractions[0].classifications[0].segment.name + "|" + eventObj._embedded.attractions[0].classifications[0].genre.name + "|" + eventObj._embedded.attractions[0].classifications[0].subGenre.name + "|" + eventObj._embedded.attractions[0].classifications[0].type.name + "|" + eventObj._embedded.attractions[0].classifications[0].subType.name);
+            $('#eprice').text(eventObj.priceRanges[0].min + " - " + eventObj.priceRanges[0].max + "USD");
+            $('#eticket').text(eventObj.dates.status.code);
+            $('#ebuy').attr('href', eventObj.url);
+            $('#eimg').attr('src', eventObj.seatmap.staticUrl);
+            $('#v-name').text(eventObj._embedded.venues[0].name);
+            $('#v-img').attr('src', eventObj._embedded.venues[0].images[0].url);
+            $('.venue_address').text("Address: " + eventObj._embedded.venues[0].address.line1 + ", " + eventObj._embedded.venues[0].city.name + ", " + eventObj._embedded.venues[0].state.stateCode + " " + eventObj._embedded.venues[0].postalCode);
+            $('.more_link').attr('href', eventObj._embedded.venues[0].url);
+           // var right = document.getElementById('verticle').style.height;
+            //var left = document.getElementById('v-add').style.height;
+           // if (left > right) {
+           //     document.getElementById('verticle').style.height = left;
+          //  }
+            //$('.on_googlemap').attr('href', "https://www.google.com/maps");
+            var country = (eventObj._embedded.venues[0].country.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
+            var state = (eventObj._embedded.venues[0].state.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
+            var city = (eventObj._embedded.venues[0].city.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
+            var add = (eventObj._embedded.venues[0].address.line1).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
+            $('.on_googlemap').attr('href', "https://www.google.com/maps/search/?api=1&query=" + add + "%2C%20" + city + "%2C%20" + state + "%2C%20" + country);
+            $(function () {
+                var text = $('#eticket').text().toLowerCase()
+                var color;
+                console.log("text", text);
+                switch (text) {
+                    case 'onsale': // change here
+                        color = "green";
+                        break;
+                    case 'rescheduled': // and change here
+                        color = "orange";
+                        break;
+                    case 'offsale':
+                        color = "red";
+                        break;
+                    case 'postponed':
+                        color = "orange";
+                        break;
+                    case 'canceled':
+                        color = "black";
+                        break;
+                }
+                $('.ticket-color').css('background', color);
+            });
+        } catch (err) {
+            console.log("something missing I guess", err)
+        }
     }
     function scrolldown() {
         let e = document.getElementById("show-venue");
@@ -353,26 +375,26 @@
         document.getElementById("show-venue").style.display = "none";
     }
     function get_location() {
-        try{
-        var token = "c25957d696b6c9"
-        //var lat //= jsonResponse.loc.split(",")[0];
-        //var long //= jsonResponse.loc.split(",")[1];
-        //console.log(lat, long);
-        fetch("https://ipinfo.io/json?token=" + token).then(
-            (response) => {
-                return response.json();
-            }).then(
-                (jsonResponse) => {
-                    //let lat = jsonResponse.loc.split(",")[0];
-                    //let long = jsonResponse.loc.split(",")[1];
-                    //console.log(lat, long);
-                    document.getElementById("location").value = jsonResponse.loc;
-                    console.log("location change to: ",document.getElementById("location").value);
-                })
+        try {
+            var token = "c25957d696b6c9"
+            //var lat //= jsonResponse.loc.split(",")[0];
+            //var long //= jsonResponse.loc.split(",")[1];
+            //console.log(lat, long);
+            fetch("https://ipinfo.io/json?token=" + token).then(
+                (response) => {
+                    return response.json();
+                }).then(
+                    (jsonResponse) => {
+                        //let lat = jsonResponse.loc.split(",")[0];
+                        //let long = jsonResponse.loc.split(",")[1];
+                        //console.log(lat, long);
+                        document.getElementById("location").value = jsonResponse.loc;
+                        console.log("location change to: ", document.getElementById("location").value);
+                    })
 
-            }catch(err){
-                console.log("ip api should not occur error,bad luck",err)
-            }
+        } catch (err) {
+            console.log("ip api should not occur error,bad luck", err)
+        }
     }
 </script>
 
