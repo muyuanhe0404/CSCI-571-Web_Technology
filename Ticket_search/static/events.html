@@ -22,15 +22,15 @@
                     <hr>
                 </div>
                 <div class="search_content">
-                    <form method="post" id="form">
+                    <form method="post" id="form" onsubmit="return false;">
                         <label for="label">Keyword<span class="asterisk">*</span> </label><br>
                         <input type="text" id="keyword" name="keyword" required><br>
 
                         <label for="label">Distance (miles)</label>
                         <label for="catagory">Catagory<span class="asterisk">*</span></label><br>
                         <input type="number" id="distance" name="distance" placeholder="10" min="0" value="10">
-                        <select name="catagory" id="catagory" required>
-                            <option value="" selected>Default</option>
+                        <select name="catagory" id="catagory" value= ""required>
+                            <option value="gotyou" selected>Default</option>
                             <option value="KZFzniwnSyZfZ7v7nJ">Music</option>
                             <option value="KZFzniwnSyZfZ7v7nE">Sports</option>
                             <option value="KZFzniwnSyZfZ7v7na">Arts</option>
@@ -67,7 +67,8 @@
                         <div class="check" style="display: none;">
                             <p class="check" id="check">check</p>
                         </div>
-                        <button id="search" type="button">search</button>
+                        <!-- <button id="search" type="button">search</button> -->
+                        <button id="search" type="submit" >search</button>
                         <script>
                             function ClearFields() {
                                 document.getElementById("keyword").value = "";
@@ -91,7 +92,7 @@
                     <p class="event_name">
 
                     </p>
-                    <hr>
+                <!-- <hr> -->
                 </div>
                 <div class="column">
                     <div class="event_date">
@@ -106,7 +107,7 @@
                         <p class="e-title">
                             Artist/Team
                         </p>
-                        <a class="e-text" id="eart" href="www.google.com" target="_blank">
+                        <a class="e-text" id="eart" href="www.google.com" target="_blank" style="color:rgb(51, 177, 224)">
                             some event name
                         </a>
                     </div>
@@ -138,15 +139,18 @@
                         <p class="e-title">
                             Ticket status
                         </p>
-                        <p class="e-text" id="eticket">
+                        <div class="ticket-color" style="display:inline-block;margin-left:5%;padding-right: 2%;">
+                           <p class="e-text" id="eticket" >
                             some status
-                        </p>
+                        </p> 
+                        </div>
+                        
                     </div>
                     <div class="event_buy">
                         <p class="e-title">
                             Buy Ticket At:
                         </p>
-                        <a class="e-text" id="ebuy" href="www.google.com" target="_blank">
+                        <a class="e-text" id="ebuy" href="www.google.com" target="_blank" style="color:rgb(51, 177, 224)">
                             Ticketmaster
                         </a>
                     </div>
@@ -180,13 +184,13 @@
                         <div class="vertical">
                         </div>
                         <div class="more_venue" id=v-add>
-                            <a class="more_link" href="www.google.com" target="_blank">
+                            <a class="more_link" href="www.google.com" target="_blank" style = "color:rgb(51, 177, 224);text-decoration:none">
                                 More events at this venue
                             </a>
                         </div>
                     </div>
                     <a class="on_googlemap" href="https://www.google.com/maps" target="_blank"
-                        style="margin-left: 20%; margin-bottom:3%">
+                        style="margin-left: 20%; margin-bottom:3% ;color:rgb(51, 177, 224);text-decoration:none">
                         Open in Google Maps
                     </a>
                 </div>
@@ -212,7 +216,15 @@
             $('.venue_info').css('display', 'none');
             const distanceVal = $("#distance").val();
             const keyword = $("#keyword").val();
-            const catagory = $("#catagory").val();
+            var cata = $("#catagory").val()
+            if (cata === "gotyou"){
+                cata = ""
+            }
+            if($("#keyword").val() === ""){
+                cata = "just to force enter"
+            }
+            const catagory = cata
+            console.log("what's the catagory: ",catagory)
             const location = $("#location").val();
             const check = $("#check").val();
             console.log("distanceVal", distanceVal);
@@ -272,13 +284,11 @@
                         alert('No Events Found');
                     }
                 },
-                error: function (xhr, status, err) {
-                    // This time, we do not end up here!
-                }
             });
         });
     });
     function getEventsData(id) {
+        try{
         //alert('called');
         console.log('id', id);
         console.log('allEventsData', allEventsData);
@@ -290,10 +300,10 @@
         document.getElementById("venue-info").style.display = "none";
         $('.event_name').text(eventObj.name);
         $('#eart').text(eventObj.name);
-        $('#eart').attr('href', eventObj.url);
+        $('#eart').attr('href', eventObj._embedded.attractions[0].url);
         $('#edate').text(eventObj.dates.start.localDate + " " + eventObj.dates.start.localTime);
         $('#evenue').text(eventObj._embedded.venues[0].name);
-        $('#egenres').text(eventObj.classifications[0].segment.name + "|" + eventObj.classifications[0].subGenre.name + "|" + eventObj.classifications[0].subType.name);
+        $('#egenres').text(eventObj._embedded.attractions[0].classifications[0].segment.name + "|" + eventObj._embedded.attractions[0].classifications[0].genre.name + "|" + eventObj._embedded.attractions[0].classifications[0].subGenre.name + "|" + eventObj._embedded.attractions[0].classifications[0].type.name + "|" + eventObj._embedded.attractions[0].classifications[0].subType.name);
         $('#eprice').text(eventObj.priceRanges[0].min + " - " + eventObj.priceRanges[0].max + "USD");
         $('#eticket').text(eventObj.dates.status.code);
         $('#ebuy').attr('href', eventObj.url);
@@ -308,8 +318,28 @@
         var city = (eventObj._embedded.venues[0].city.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
         var add = (eventObj._embedded.venues[0].address.line1).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
         $('.on_googlemap').attr('href', "https://www.google.com/maps/search/?api=1&query=" + add + "%2C%20" + city + "%2C%20" + state + "%2C%20" + country);
+        $(function() {
+            var text = $('#eticket').text().toLowerCase()
+            var color;
+            console.log("text",text);
+            switch (text) {
+             case 'onsale': // change here
+                color = "green";
+                break;
+             case 'rescheduled': // and change here
+                color = "orange";
+                break;
+            case 'offsale':
+                color = "red";
+            default :
+                //color = "black";
+            }
+            $('.ticket-color').css('background', color);
+        });
+    }catch(err){
+        console.log("something missing I guess",err)
     }
-
+    }
     function scrolldown() {
         let e = document.getElementById("show-venue");
         e.scrollIntoView({
@@ -323,11 +353,11 @@
         document.getElementById("show-venue").style.display = "none";
     }
     function get_location() {
+        try{
         var token = "c25957d696b6c9"
         //var lat //= jsonResponse.loc.split(",")[0];
         //var long //= jsonResponse.loc.split(",")[1];
         //console.log(lat, long);
-
         fetch("https://ipinfo.io/json?token=" + token).then(
             (response) => {
                 return response.json();
@@ -340,7 +370,9 @@
                     console.log("location change to: ",document.getElementById("location").value);
                 })
 
-
+            }catch(err){
+                console.log("ip api should not occur error,bad luck",err)
+            }
     }
 </script>
 

@@ -6,8 +6,8 @@
 }
 
 .all {
-  border-color: white;
-  border-style: groove;
+  /* border-color: white; */
+  border-style: none;
   width: 100%;
   margin: auto;
   position: static;
@@ -25,20 +25,21 @@ body {
 
 .upper-div {
   width: 35%;
-  border-color: rgb(248, 245, 245);
+  /* border-color: rgb(248, 245, 245); */
   border-radius: 25px;
   background: transparent;
   background-color: rgba(184, 178, 178, 0.185);
   backdrop-filter: blur(5px);
-  border-style: groove;
+  border-style: none;
   margin: auto;
   margin-top: 3%;
   resize: none;
+  padding-top: 1%;
 
 }
 
 .search_title {
-  border-color: rgb(248, 245, 245);
+  /* border-color: rgb(248, 245, 245); */
   margin: auto;
   resize: none;
 }
@@ -61,21 +62,22 @@ body {
 
 .event_info {
   width: 70%;
-  border-color: rgb(248, 245, 245);
+  /* border-color: rgb(248, 245, 245); */
   border-radius: 25px;
   background: transparent;
   background-color: rgba(184, 178, 178, 0.185);
   backdrop-filter: blur(5px);
-  border-style: groove;
+  border-style: none;
   margin: auto;
   margin-top: 3%;
   resize: none;
   margin-bottom:5%;
   padding-bottom: 2%;
+  padding-top: 1%;
 }
 
 .event_title {
-  border-color: rgb(248, 245, 245);
+  /* border-color: rgb(248, 245, 245); */
   width: 70%;
   margin: auto;
   resize: none;
@@ -91,10 +93,10 @@ body {
 
 .venue_info {
   width: 65%;
-  border-color: rgb(248, 245, 245);
+  /* border-color: rgb(248, 245, 245); */
   border-radius: 25px;
   background: white;
-  border-style: groove;
+  border-style: none;
   margin: auto;
   margin-top: 3%;
   resize: none;
@@ -148,35 +150,35 @@ body {
   border-color: rgb(245, 247, 248);
   margin: auto;
   resize: none;
-  margin-bottom: 4%;
+  margin-bottom: 8%;
 }
 
 .event_art {
   border-color: rgb(245, 247, 248);
   margin: auto;
   resize: none;
-  margin-bottom: 4%;
+  margin-bottom: 7%;
 }
 
 .event_venue {
   border-color: rgb(245, 247, 248);
   margin: auto;
   resize: none;
-  margin-bottom: 4%;
+  margin-bottom: 7%;
 }
 
 .event_genres {
   border-color: rgb(245, 247, 248);
   margin: auto;
   resize: none;
-  margin-bottom: 4%;
+  margin-bottom: 7%;
 }
 
 .event_price {
   border-color: rgb(245, 247, 248);
   margin: auto;
   resize: none;
-  margin-bottom: 4%;
+  margin-bottom: 7%;
 }
 
 .event_ticket {
@@ -216,10 +218,12 @@ body {
 
 .e-title {
   font-family: Georgia;
-  color: rgb(51, 177, 224);
+  color: aqua;
   font-size: 1.5vw;
   line-height: 0.1vw;
   margin-left: 5%;
+  margin-bottom: 3%;
+  margin-top: 5%;
 }
 
 .e-text {
@@ -228,6 +232,7 @@ body {
   font-size: 1vw;
   line-height: 1%;
   margin-left: 5%;
+  text-decoration: none;
 }
 
 hr {
@@ -387,7 +392,7 @@ button#clear {
 }
 hr#venue{
 
-  width: 90%;
+  width: 40%;
   margin-bottom: 1%;
 }
 #v-add {
