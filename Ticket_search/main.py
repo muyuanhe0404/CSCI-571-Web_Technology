@@ -65,14 +65,14 @@ def result():
         #print(geoh)
         #https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R&radius=1000&geoPoint=dr5regw
         base = "https://app.ticketmaster.com/discovery/v2/events.json?"
-        key =  "fCNma7FdtKa4QowUHCLWABSDGhxVQO7R",
+        key =  "fCNma7FdtKa4QowUHCLWABSDGhxVQO7R"
         radius = request.form["distance"]
         segment = request.form["catagory"]
         keyword = request.form["keyword"]
         if segment == "":
-            search_address = f"{base}&apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R&keyword{keyword}&radius={radius}&geoPoint={geoh}"
+            search_address = f"{base}&apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R&keyword={keyword}&radius={radius}&geoPoint={geoh}"
         else:
-            search_address = f"{base}&apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R&keyword{keyword}&segmentId={segment}&radius={radius}&geoPoint={geoh}"
+            search_address = f"{base}&apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R&keyword={keyword}&segmentId={segment}&radius={radius}&geoPoint={geoh}"
         response = requests.get(search_address)
          
         return response.json()
@@ -93,6 +93,20 @@ def get_data():
         return redirect(url_for("get_data"))
     else:
         return app.send_static_file("events.html")
+    
+@app.route('/check',methods = ['POST', 'GET'])
+def cloud_using_confirm():
+    base = "https://app.ticketmaster.com/discovery/v2/events.json?"
+    key =  "fCNma7FdtKa4QowUHCLWABSDGhxVQO7R"
+    radius = request.args.get('radius')
+    keyword = request.args.get("keyword")
+    lat = request.args.get("lat") #"34.0434"
+    lng = request.args.get("lng") #-118.2716"
+    geoh = geohash.encode(lat, lng, 7) #http://127.0.0.1:5000/check?radius=10&keyword=concert&lat=34.0434&lng=-118.2716
+    if request.method == 'GET':
+        search_address = f"{base}&apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R&keyword={keyword}&radius={radius}&geoPoint={geoh}"
+        response = requests.get(search_address)
+    return response.json()
         
 if __name__ == "__main__":
     app.run()

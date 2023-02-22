@@ -107,7 +107,7 @@
                         <p class="e-title">
                             Artist/Team
                         </p>
-                        <a class="e-text" id="eart" href="www.google.com" target="_blank"
+                        <a class="e-text" id="eart" href="https://www.google.com" target="_blank"
                             style="color:rgb(51, 177, 224)">
                             some event name
                         </a>
@@ -125,7 +125,7 @@
                             Genres
                         </p>
                         <p class="e-text" id="egenres">
-                            some genres
+                            undefine
                         </p>
                     </div>
                     <div class="event_price">
@@ -133,7 +133,7 @@
                             Price Ranges
                         </p>
                         <p class="e-text" id="eprice">
-                            some price
+                            no information on price
                         </p>
                     </div>
                     <div class="event_ticket">
@@ -142,7 +142,7 @@
                         </p>
                         <div class="ticket-color" style="display:inline-block;margin-left:5%;padding-right: 2%;">
                             <p class="e-text" id="eticket">
-                                some status
+                                no status
                             </p>
                         </div>
 
@@ -151,14 +151,14 @@
                         <p class="e-title">
                             Buy Ticket At:
                         </p>
-                        <a class="e-text" id="ebuy" href="www.google.com" target="_blank"
+                        <a class="e-text" id="ebuy" href="https://www.google.com" target="_blank"
                             style="color:rgb(51, 177, 224)">
                             Ticketmaster
                         </a>
                     </div>
                 </div>
                 <div class="event_img">
-                    <img src="./img/background.jpg" id="eimg" width="70%" height="70%" />
+                    <img src="" alt="no seated map" id="eimg" width="70%" height="70%" />
                 </div>
             </div>
             <div class="show-venue" id="show-venue" style="display: none;">
@@ -174,7 +174,7 @@
                     </p>
                     <hr id="venue">
                     <div class="venue_img">
-                        <img src="./img/background.jpg" id="v-img" width="30%" height="30%" style="margin-left:30%" />
+                        <img src="" alt="no venue image" id="v-img" width="30%" height="30%" style="margin-left:30%" />
                     </div>
                     <div>
                         <div class="venue_address" id=v-add>
@@ -187,14 +187,14 @@
                             </div>
                         </div>
                         <div class="more_venue" id=v-add>
-                            <a class="more_link" href="www.google.com" target="_blank"
+                            <a class="more_link" href="https://www.google.com" target="_blank"
                                 style="color:rgb(51, 177, 224);text-decoration:none">
                                 More events at this venue
                             </a>
                         </div>
                     </div>
                     <div id="on-map" style="float:left;padding-bottom:2%;padding-top: 5%;"></div>
-                    <a class="on_googlemap" href="https://www.google.com/maps" target="_blank"
+                    <a class="on_googlemap" id="on-google-map" href="https://www.google.com/maps" target="_blank"
                         style="margin-left: 20%; margin-bottom:3% ;color:rgb(51, 177, 224);text-decoration:none">
                         Open in Google Maps
                     </a>
@@ -300,67 +300,105 @@
         });
     });
     function getEventsData(id) {
-        try {
-            //alert('called');
-            console.log('id', id);
-            console.log('allEventsData', allEventsData);
-            const eventObj = allEventsData.find((res) => res.id == id)
-            console.log('eventObj', eventObj);
 
-            $('.event_info').css('display', 'block');
-            $('.show-venue').css('display', 'block');
-            document.getElementById("venue-info").style.display = "none";
-            $('.event_name').text(eventObj.name);
-            $('#eart').text(eventObj.name);
+        //alert('called');
+        console.log('id', id);
+        console.log('allEventsData', allEventsData);
+        const eventObj = allEventsData.find((res) => res.id == id)
+        console.log('eventObj', eventObj);
+        $('.event_info').css('display', 'block');
+        $('.show-venue').css('display', 'block');
+        document.getElementById("venue-info").style.display = "none";
+        $('.event_name').text(eventObj.name);
+        $('#eart').text(eventObj.name);
+        try {
             $('#eart').attr('href', eventObj._embedded.attractions[0].url);
-            $('#edate').text(eventObj.dates.start.localDate + " " + eventObj.dates.start.localTime);
-            $('#evenue').text(eventObj._embedded.venues[0].name);
+            $('#eart').attr('style', "pointer-events: visible");
+        }
+        catch (err) {
+            console.log("no artist");
+            $('#eart').attr('style', "pointer-events: none");
+        }
+        $('#edate').text(eventObj.dates.start.localDate + " " + eventObj.dates.start.localTime);
+        $('#evenue').text(eventObj._embedded.venues[0].name);
+        try {
             $('#egenres').text(eventObj._embedded.attractions[0].classifications[0].segment.name + "|" + eventObj._embedded.attractions[0].classifications[0].genre.name + "|" + eventObj._embedded.attractions[0].classifications[0].subGenre.name + "|" + eventObj._embedded.attractions[0].classifications[0].type.name + "|" + eventObj._embedded.attractions[0].classifications[0].subType.name);
+        }
+        catch (err) {
+            console.log("no genres");
+        }
+        try {
             $('#eprice').text(eventObj.priceRanges[0].min + " - " + eventObj.priceRanges[0].max + "USD");
-            $('#eticket').text(eventObj.dates.status.code);
-            $('#ebuy').attr('href', eventObj.url);
-            $('#eimg').attr('src', eventObj.seatmap.staticUrl);
-            $('#v-name').text(eventObj._embedded.venues[0].name);
+        } catch (err) {
+            console.log("price missing I guess", err)
+        }
+        $('#eticket').text(eventObj.dates.status.code);
+        $('#ebuy').attr('href', eventObj.url);
+        $('#eimg').attr('src', eventObj.seatmap.staticUrl);
+        $('#v-name').text(eventObj._embedded.venues[0].name);
+        try {
             $('#v-img').attr('src', eventObj._embedded.venues[0].images[0].url);
-            $('.venue_address').text("Address: " + eventObj._embedded.venues[0].address.line1 + ", " + eventObj._embedded.venues[0].city.name + ", " + eventObj._embedded.venues[0].state.stateCode + " " + eventObj._embedded.venues[0].postalCode);
-            $('.more_link').attr('href', eventObj._embedded.venues[0].url);
-           // var right = document.getElementById('verticle').style.height;
-            //var left = document.getElementById('v-add').style.height;
-           // if (left > right) {
-           //     document.getElementById('verticle').style.height = left;
-          //  }
-            //$('.on_googlemap').attr('href', "https://www.google.com/maps");
-            var country = (eventObj._embedded.venues[0].country.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
-            var state = (eventObj._embedded.venues[0].state.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
-            var city = (eventObj._embedded.venues[0].city.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
+        }
+        catch (err) {
+            console.log("image missing I guess", err)
+            $('#v-img').attr('src', "");
+        }
+        $('.venue_address').text("Address: " + eventObj._embedded.venues[0].address.line1 + ", " + eventObj._embedded.venues[0].city.name + ", " + eventObj._embedded.venues[0].state.stateCode + " " + eventObj._embedded.venues[0].postalCode);
+        //console.log("address: ",$('.venue_address').value)
+        
+            $('.more_venue').attr('href', eventObj._embedded.venues[0].url);
+            console.log("check more event value",eventObj._embedded.venues[0].url)
+            if (eventObj._embedded.venues[0].url==undefined){
+                $('.more_venue').attr('style', "pointer-events: none");
+            }else{
+                $('.more_venue').attr('style', "pointer-events: visible");
+            }
+            
+        
+
+        // var right = document.getElementById('verticle').style.height;
+        //var left = document.getElementById('v-add').style.height;
+        // if (left > right) {
+        //     document.getElementById('verticle').style.height = left;
+        //  }
+        //$('.on_googlemap').attr('href', "https://www.google.com/maps");
+        var country = (eventObj._embedded.venues[0].country.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
+        var state = (eventObj._embedded.venues[0].state.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
+        var city = (eventObj._embedded.venues[0].city.name).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
+        try {
             var add = (eventObj._embedded.venues[0].address.line1).replace(/ /g, "%20").replace(/&/g, "%26").replace(/#/g, "%23").replace(/,/g, "%2C");
             $('.on_googlemap').attr('href', "https://www.google.com/maps/search/?api=1&query=" + add + "%2C%20" + city + "%2C%20" + state + "%2C%20" + country);
-            $(function () {
-                var text = $('#eticket').text().toLowerCase()
-                var color;
-                console.log("text", text);
-                switch (text) {
-                    case 'onsale': // change here
-                        color = "green";
-                        break;
-                    case 'rescheduled': // and change here
-                        color = "orange";
-                        break;
-                    case 'offsale':
-                        color = "red";
-                        break;
-                    case 'postponed':
-                        color = "orange";
-                        break;
-                    case 'canceled':
-                        color = "black";
-                        break;
-                }
-                $('.ticket-color').css('background', color);
-            });
-        } catch (err) {
-            console.log("something missing I guess", err)
         }
+        catch (err) {
+            console.log("no address", err)
+            $('.on_googlemap').text("manually search on google")
+            //document.getElementById("show-venue").style.display = "none"
+        }
+        //$('.on_googlemap').attr('href', "https://www.google.com/maps/search/?api=1&query=" + add + "%2C%20" + city + "%2C%20" + state + "%2C%20" + country);
+        $(function () {
+            var text = $('#eticket').text().toLowerCase()
+            var color;
+            console.log("text", text);
+            switch (text) {
+                case 'onsale': // change here
+                    color = "green";
+                    break;
+                case 'rescheduled': // and change here
+                    color = "orange";
+                    break;
+                case 'offsale':
+                    color = "red";
+                    break;
+                case 'postponed':
+                    color = "orange";
+                    break;
+                case 'canceled':
+                    color = "black";
+                    break;
+            }
+            $('.ticket-color').css('background', color);
+        });
+
     }
     function scrolldown() {
         let e = document.getElementById("show-venue");
