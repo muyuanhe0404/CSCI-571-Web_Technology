@@ -84,7 +84,10 @@
                     </form>
                 </div>
             </div>
-            <div class="data_table">
+            <div id="no-found" style="background:white; display: none;">
+                <p style="color:red;text-align:center;">No Records found</p>
+            </div>
+            <div class="data_table" id="example-d">
                 <table id="example" class="display" width="100%"></table>
             </div>
             <div class="event_info" id="info" style="display: none;">
@@ -255,6 +258,17 @@
                 },
                 dataType: "json",
                 success: function (response) {
+                    console.log(response);
+                    //alert(response);
+                    if (response.page.totalElements== 0) {
+                        console.log("status", response.page.number)
+                        document.getElementById("no-found").style.display = "block";
+                        document.getElementById("example-d").style.display = "none";
+                    } else {
+                        console.log("status", response.page.number)
+                        document.getElementById("no-found").style.display = "none";
+                        document.getElementById("example-d").style.display = "block";
+                    }
                     dataSet = [];
                     console.log('response of ticket master', response._embedded.events);
                     allEventsData = response._embedded.events;
@@ -345,16 +359,16 @@
         }
         $('.venue_address').text("Address: " + eventObj._embedded.venues[0].address.line1 + ", " + eventObj._embedded.venues[0].city.name + ", " + eventObj._embedded.venues[0].state.stateCode + " " + eventObj._embedded.venues[0].postalCode);
         //console.log("address: ",$('.venue_address').value)
-        
-            $('.more_venue').attr('href', eventObj._embedded.venues[0].url);
-            console.log("check more event value",eventObj._embedded.venues[0].url)
-            if (eventObj._embedded.venues[0].url==undefined){
-                $('.more_venue').attr('style', "pointer-events: none");
-            }else{
-                $('.more_venue').attr('style', "pointer-events: visible");
-            }
-            
-        
+
+        $('.more_link').attr('href', eventObj._embedded.venues[0].url);
+        console.log("check more event value", eventObj._embedded.venues[0].url)
+        if (eventObj._embedded.venues[0].url == undefined) {
+            $('.more_venue').attr('style', "pointer-events: none");
+        } else {
+            $('.more_venue').attr('style', "pointer-events: visible");
+        }
+
+
 
         // var right = document.getElementById('verticle').style.height;
         //var left = document.getElementById('v-add').style.height;

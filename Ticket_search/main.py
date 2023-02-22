@@ -74,7 +74,6 @@ def result():
         else:
             search_address = f"{base}&apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R&keyword={keyword}&segmentId={segment}&radius={radius}&geoPoint={geoh}"
         response = requests.get(search_address)
-         
         return response.json()
 
 
