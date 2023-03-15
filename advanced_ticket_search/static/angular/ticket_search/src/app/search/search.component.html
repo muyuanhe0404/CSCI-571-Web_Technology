@@ -1,0 +1,42 @@
+<div>
+    <div class=" mx-auto w-25 p-2 border border-light rounded-4 ">
+        <p class="h2 text-light text-center">Events Search</p>
+        <hr class="bg-light border-2 border-top border-light ">
+        <form>
+            <div class="mb-3 text-light">
+                <label for="Keyword" class="form-label">Keyword</label>
+                <input type="text" class="form-control" id="Keyword">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3 text-light">
+                        <label for="distance" class="form-label">distance</label>
+                        <input type="number" class="form-control" id="distance">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3 text-light">
+                        <label for="Catagory" class="form-label">Catagory</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="Default" selected>Default</option>
+                            <option value="Muisc">Music</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Arts&Theatre">Arts&Theatre</option>
+                            <option value="Film">Film</option>
+                            <option value="Miscellaneous">Miscellaneous</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 text-light">
+                <label for="Location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="Location">
+            </div>
+            <div class="mb-3 form-check text-light">
+                <input type="checkbox" class="form-check-input" id="Auto-detect">
+                <label class="form-check-label" for="Auto-detect">Auto-detect your location</label>
+            </div>
+            <button type="submit text-light" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
