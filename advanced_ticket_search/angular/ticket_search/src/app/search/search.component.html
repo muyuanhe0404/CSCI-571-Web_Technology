@@ -1,5 +1,5 @@
-<div>
-    <div class=" mx-auto w-25 p-2 border border-light rounded-4 container">
+<div class="row col-12">
+    <div class="mx-auto w-75 p-2 border border-light rounded-4 container col-8">
         <p class="h2 text-light text-center">Events Search</p>
         <hr class="bg-light border-2 border-top border-light shadow-5-strong ">
         <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm" class="shadow-5-strong">
@@ -40,7 +40,7 @@
                 <input type="checkbox" (change)="handleAutoDetect($event)" class="form-check-input" id="Auto-detect">
                 <label class="form-check-label" for="Auto-detect">Auto-detect your location</label>
             </div>
-            <button type="submit" class="btn btn-primary text-light" value="Submit">Submit</button>
+            <button type="submit" class="btn btn-danger text-light" value="Submit">Submit</button>
             <span> &nbsp;</span>
             <button type="button" (click)="resetForm(myForm)" class="btn btn-primary text-light">Clear</button>
         </form>
@@ -53,18 +53,21 @@
         </ul>
     </div> -->
     <!-- <app-my-table></app-my-table> -->
+</div>
 
-
+<div class="row col-12">
     <div class="text-center">
         <div class="row badge text-bg-light p-3 text-danger text-center" *ngIf="hav_d && !data">
             <p>no events found</p>
         </div>
     </div>
+</div>
 
+<div class="row col-12 mt-5">
     <div *ngIf="!show && hav_d && data">
         <app-table [show]="show" (showChangeEvent)="showChange($event)"></app-table>
     </div>
-
+    
     <div *ngIf="show && hav_d">
         <app-detail-bar [show]="show" (showChangeEvent)="showChange($event)"></app-detail-bar>
     </div>

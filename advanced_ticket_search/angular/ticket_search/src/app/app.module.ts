@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { ContainerComponent } from './container/container.component';
 import { NavComponent } from './nav/nav.component';
@@ -24,6 +24,7 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
+
 const appRoute: Routes = [
   { 
     path: 'search',
@@ -50,6 +51,7 @@ const appRoute: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoute),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,

@@ -1,16 +1,17 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppServiceService } from '../app-service.service'
 import { SharedService } from "../shared/shared.service"
-import {ThemePalette} from '@angular/material/core';
-import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-detail-bar',
   templateUrl: './detail-bar.component.html',
-  styleUrls: ['./detail-bar.component.css']
+  styleUrls: ['./detail-bar.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DetailBarComponent {
   @Input() show = false;
@@ -49,7 +50,10 @@ export class DetailBarComponent {
   showText2 = "Show more"
   showText3 = "Show more"
   lat = 0;
-  lng=0;
+  lng = 0;
+  center: any
+  position: any
+  addedItem = false
 
   handleBackClick() {
     this.showChangeEvent.emit(!this.show)
@@ -114,38 +118,38 @@ export class DetailBarComponent {
         //   const pa2 = {
         //     artist: art
         //   }
-          // const queryStr = new URLSearchParams(pa2).toString();
-          this.appService.getArtist(queryStr).subscribe((res: any) => {
-            console.log('artist-return', res);
+        // const queryStr = new URLSearchParams(pa2).toString();
+        this.appService.getArtist(queryStr).subscribe((res: any) => {
+          console.log('artist-return', res);
+          if (res) {
+            this.a_detail = res;
+            //this.a_detail_list.push(res)
+            this.artid = res.body.artists.items ? res.body.artists.items[0].id : 0
+            //this.a_id_list.push(res.body.artists.items ? res.body.artists.items[0].id : 0)
+            // console.log("what's the query",queryStr)
+            // console.log("what's the id", this.artid)
+            // console.log('a-detail', this.a_detail);
+            //console.log("a_detail_list", this.a_detail_list)
+          }
+          const art_i = {
+            artid: res.body.artists.items ? res.body.artists.items[0].id : 0
+          }
+          const queryStr1 = new URLSearchParams(art_i).toString();
+          this.appService.getAlbum(queryStr1).subscribe((res: any) => {
+            console.log("id pass", queryStr1)
+            console.log('artist-album', res);
             if (res) {
-              this.a_detail = res;
-              //this.a_detail_list.push(res)
-              this.artid = res.body.artists.items ? res.body.artists.items[0].id : 0
-              //this.a_id_list.push(res.body.artists.items ? res.body.artists.items[0].id : 0)
-              // console.log("what's the query",queryStr)
-              // console.log("what's the id", this.artid)
-              // console.log('a-detail', this.a_detail);
-              //console.log("a_detail_list", this.a_detail_list)
+              this.art_detail = res;
+              //this.album_list.push(res)
+              console.log('art-detail', this.art_detail);
+              //console.log('album list', this.album_list);
+              //this.shared.updateMessage(res)
             }
-              const art_i = {
-                artid: res.body.artists.items ? res.body.artists.items[0].id : 0
-              }
-              const queryStr1 = new URLSearchParams(art_i).toString();
-              this.appService.getAlbum(queryStr1).subscribe((res: any) => {
-                console.log("id pass", queryStr1)
-                console.log('artist-album', res);
-                if (res) {
-                  this.art_detail = res;
-                  //this.album_list.push(res)
-                  console.log('art-detail', this.art_detail);
-                  //console.log('album list', this.album_list);
-                  //this.shared.updateMessage(res)
-                }
-              });
-            
-            // console.log("what's the id_list",this.a_id_list)
-            // console.log("what's the album_list",this.album_list)
           });
+
+          // console.log("what's the id_list",this.a_id_list)
+          // console.log("what's the album_list",this.album_list)
+        });
         //}
         // if(this.artist_list){
         //   for (var aid of this.a_id_list) {
@@ -168,22 +172,34 @@ export class DetailBarComponent {
         //   });
         // }
         // }
-        
+
         this.appService.getVenue(queryStr).subscribe((res: any) => {
           console.log("total pass", queryStr)
           console.log('venue-return', res);
           if (res && res._embedded) {
             this.v_detail = res;
-            // mapOptions: google.maps.MapOptions = {
-            //   center: { lat:this.v_detail._embedded.venues[0].location.latitude, lng: this.v_detail._embedded.venues[0].location.longitude },
-            //   zoom: 14
-            // }
-            // marker = {
-            //   position: { lat:this.v_detail._embedded.venues[0].location.latitude, lng: this.v_detail._embedded.venues[0].location.longitude },
-            // }
             console.log('v-detail', this.v_detail);
+            this.center = {
+              lat: parseFloat(this.v_detail?._embedded.venues[0].location.latitude),
+              lng: parseFloat(this.v_detail._embedded.venues[0].location.longitude)
+            }
+
+            // this.position = {
+            //   lat: this.v_detail._embedded.venues[0].location.latitude,
+            //   lng: this.v_detail._embedded.venues[0].location.longitude
+            // }
 
             //this.shared.updateMessage(res)
+          }
+
+          let data = localStorage.getItem('favor') ? JSON.parse(localStorage.getItem('favor') || '') : [];
+          console.log('favor data ===', data);
+          const temp = data && data.filter((item: any) => item.id === this.name.id)
+          if (temp.length) {
+            console.log('same item ===');
+            this.addedItem = true
+          } else {
+            this.addedItem = false
           }
         });
 
@@ -225,25 +241,31 @@ export class DetailBarComponent {
   // }
 
   // mapOptions: google.maps.MapOptions = {
-            //   center: { lat:this.v_detail._embedded.venues[0].location.latitude, lng: this.v_detail._embedded.venues[0].location.longitude },
-            //   zoom: 14
-            // }
-            // marker = {
-            //   position: { lat:this.v_detail._embedded.venues[0].location.latitude, lng: this.v_detail._embedded.venues[0].location.longitude },
-            // }
+  //   center: { lat:this.v_detail._embedded.venues[0].location.latitude, lng: this.v_detail._embedded.venues[0].location.longitude },
+  //   zoom: 14
+  // }
+  // marker = {
+  //   position: { lat:this.v_detail._embedded.venues[0].location.latitude, lng: this.v_detail._embedded.venues[0].location.longitude },
+  // }
 
   addFavoriteData() {
     // save data
     let data = localStorage.getItem('favor') ? JSON.parse(localStorage.getItem('favor') || '') : [];
     console.log('favor data ===', data);
-    const temp = data.filter((item: any) => item.id === this.name.id)
+    const temp = data && data.filter((item: any) => item.id === this.name.id)
     if (temp.length) {
       console.log('same item ===');
+      let filteredData = data && data.filter((ele: any) => ele.id !== this.name.id)
+      localStorage.setItem('favor', JSON.stringify(filteredData))
+      this.addedItem = false
+      alert('item removed from favorite list')
     } else {
       data.push(this.name);
+      this.addedItem = true
       localStorage.setItem('favor', JSON.stringify(data))
+      alert('item added from favorite list')
     }
-    
+
   }
 
   toggleShowOrLess(len: number) {
@@ -252,7 +274,7 @@ export class DetailBarComponent {
       this.showText = 'Show less'
     } else {
       this.count = this.lastInext
-      this.showText ='Show more'
+      this.showText = 'Show more'
     }
 
   }
@@ -262,7 +284,7 @@ export class DetailBarComponent {
       this.showText2 = 'Show less'
     } else {
       this.count2 = this.lastInext2
-      this.showText2 ='Show more'
+      this.showText2 = 'Show more'
     }
 
   }
@@ -272,7 +294,7 @@ export class DetailBarComponent {
       this.showText3 = 'Show less'
     } else {
       this.count3 = this.lastInext3
-      this.showText3 ='Show more'
+      this.showText3 = 'Show more'
     }
 
   }

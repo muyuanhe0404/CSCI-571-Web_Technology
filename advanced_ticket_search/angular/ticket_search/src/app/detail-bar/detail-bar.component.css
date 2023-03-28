@@ -1,0 +1,21 @@
+.showmoreless {
+    cursor: pointer;
+}
+.btn-sameline { display: inline-block; }
+
+.modal-backdrop.show {
+    opacity: 0 !important;
+}
+
+.modal-backdrop {
+    --bs-backdrop-zindex: 1050;
+    --bs-backdrop-bg: #000;
+    --bs-backdrop-opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bs-backdrop-bg);
+}
