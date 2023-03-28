@@ -1,5 +1,4 @@
 
-const axios = require('axios');
 const express = require("express");
 const bodyParser = require('body-parser')
 const URL = 'https://app.ticketmaster.com/discovery/v2/events.json?&apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R';
@@ -122,7 +121,6 @@ app.get('/', (req, res) => {
     res.json({ "message": "hello" })
 })
 
-
 app.get('/api/ticketmaster', async (req, res) => {
     console.log('req query', parseInt(req.query.distance));
     const geo = geohash.encode(Number(req.query.lat), Number(req.query.lng))
@@ -132,6 +130,7 @@ app.get('/api/ticketmaster', async (req, res) => {
     const data = await fetch(`${URL}&keyword=${req.query.keyword}&segmentId=${req.query.catagory}&radius=${parseInt(req.query.distance)}&geoPoint=${geo}`).then(data => data.json());
     res.status(200).json(data)
 })
+
 app.get('/api/detail', async (req, res) => {
     console.log('id', req.query.id);
     const data = await fetch(`${Detail}${req.query.id}.json?apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R`).then(data => data.json());
@@ -151,7 +150,16 @@ app.get('/api/ip', async (req, res)=> {
 //     const data = await fetch(`${Venue}${req.query.venue}&apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R`).then(data => data.json());
 //     res.status(200).json(data)
 // })
+app.get('/api/check', async (req, res) => {
+    const geo = geohash.encode(34.0522, -118.3277)
+    console.log('geolat', 34.0522);
+    console.log('geolng', -118.3277);
+    console.log('geo', geo);
+    const data = await fetch(`${URL}&keyword=P!NK&segmentId=KZFzniwnSyZfZ7v7nJ&radius=10&geoPoint=${geo}`).then(data => data.json());
+    res.status(200).json(data)
+})
 
-app.listen(3080, (req, res) => {
+
+app.listen(process.env.PORT || 8080, (req, res) => {
     console.log("success");
 })

@@ -33,6 +33,11 @@ const appRoute: Routes = [
   { 
     path: 'favorites',
     component: FavoritesComponent 
+  },
+  {
+    path: '',
+    redirectTo: 'search',
+    pathMatch: 'full'
   }
 ]
 @NgModule({

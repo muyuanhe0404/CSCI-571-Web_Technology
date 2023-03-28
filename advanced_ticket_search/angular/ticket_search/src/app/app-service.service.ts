@@ -7,7 +7,8 @@ export class AppServiceService {
 
   constructor(private http : HttpClient ) { }
 
-  baseUrl = 'http://localhost:3080'
+  baseUrl = 'https://backend-bpedzgmjba-uc.a.run.app'
+  // baseUrl = 'https://single-tide-380023.uc.r.appspot.com'
   geoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?'
   getData (params: any) {
     return this.http.get(`${this.baseUrl}/api/ticketmaster?${params}`)
