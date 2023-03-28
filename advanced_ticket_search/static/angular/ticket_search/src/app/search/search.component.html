@@ -1,42 +1,71 @@
 <div>
-    <div class=" mx-auto w-25 p-2 border border-light rounded-4 ">
+    <div class=" mx-auto w-25 p-2 border border-light rounded-4 container">
         <p class="h2 text-light text-center">Events Search</p>
-        <hr class="bg-light border-2 border-top border-light ">
-        <form>
+        <hr class="bg-light border-2 border-top border-light shadow-5-strong ">
+        <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm" class="shadow-5-strong">
             <div class="mb-3 text-light">
                 <label for="Keyword" class="form-label">Keyword</label>
-                <input type="text" class="form-control" id="Keyword">
+                <input type="text" class="form-control" name="Keyword" id="Keyword" [(ngModel)]="Keyword" required>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3 text-light">
                         <label for="distance" class="form-label">distance</label>
-                        <input type="number" class="form-control" id="distance">
+                        <input type="number" class="form-control" min="0" id="distance" name="Distance"
+                            [(ngModel)]="Distance">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3 text-light">
                         <label for="Catagory" class="form-label">Catagory</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="Default" selected>Default</option>
-                            <option value="Muisc">Music</option>
-                            <option value="Sports">Sports</option>
-                            <option value="Arts&Theatre">Arts&Theatre</option>
-                            <option value="Film">Film</option>
-                            <option value="Miscellaneous">Miscellaneous</option>
+                        <select class="form-select" aria-label="Default select example" name="Catagory"
+                            [(ngModel)]="Catagory">
+                            <option value="" selected>Default</option>
+                            <option value="KZFzniwnSyZfZ7v7nJ">Music</option>
+                            <option value="KZFzniwnSyZfZ7v7nE">Sports</option>
+                            <option value="KZFzniwnSyZfZ7v7na">Arts</option>
+                            <option value="KZFzniwnSyZfZ7v7na">Theatre</option>
+                            <option value="KZFzniwnSyZfZ7v7nn">Film</option>
+                            <option value="KZFzniwnSyZfZ7v7n1">Miscellaneous</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="mb-3 text-light">
                 <label for="Location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="Location">
+                <input type="text" class="form-control" [disabled]="autoDetect" id="Location" required name="Location"
+                    [(ngModel)]="Location">
             </div>
             <div class="mb-3 form-check text-light">
-                <input type="checkbox" class="form-check-input" id="Auto-detect">
+                <input type="checkbox" (change)="handleAutoDetect($event)" class="form-check-input" id="Auto-detect">
                 <label class="form-check-label" for="Auto-detect">Auto-detect your location</label>
             </div>
-            <button type="submit text-light" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary text-light" value="Submit">Submit</button>
+            <span> &nbsp;</span>
+            <button type="button" (click)="resetForm(myForm)" class="btn btn-primary text-light">Clear</button>
         </form>
+    </div>
+    <!-- <div class ="text-light">
+        <ul *ngIf="data && data.length">
+            <li *ngFor="let event of data">
+                {{event?.url}}
+            </li>
+        </ul>
+    </div> -->
+    <!-- <app-my-table></app-my-table> -->
+
+
+    <div class="text-center">
+        <div class="row badge text-bg-light p-3 text-danger text-center" *ngIf="hav_d && !data">
+            <p>no events found</p>
+        </div>
+    </div>
+
+    <div *ngIf="!show && hav_d && data">
+        <app-table [show]="show" (showChangeEvent)="showChange($event)"></app-table>
+    </div>
+
+    <div *ngIf="show && hav_d">
+        <app-detail-bar [show]="show" (showChangeEvent)="showChange($event)"></app-detail-bar>
     </div>
 </div>

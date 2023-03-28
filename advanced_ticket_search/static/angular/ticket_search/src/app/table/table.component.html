@@ -1,0 +1,47 @@
+<!-- <div class="text-light">
+    <ul *ngIf="data && data.length">
+        <li *ngFor="let event of data">
+            {{event.url}}
+        </li>
+    </ul>
+</div> -->
+<hr>
+<table mat-table [dataSource]="data" class="mat-elevation-z8 bg-dark text-light table-striped ">
+
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Date/Time">
+    <th mat-header-cell *matHeaderCellDef> Date/Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.dates.start.localDate}} {{element.dates.start.localTime}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Icon">
+    <th mat-header-cell *matHeaderCellDef> Icon </th>
+    <td mat-cell *matCellDef="let element">
+      <img src="{{element.images[0].url}}" width="50px" height="50px" />
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Event">
+    <th mat-header-cell *matHeaderCellDef> Event </th>
+    <td mat-cell *matCellDef="let element" class="clickable ">
+      {{element.name}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Genre">
+    <th mat-header-cell *matHeaderCellDef> Genre </th>
+    <td mat-cell *matCellDef="let element"> {{element.classifications[0].segment.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Venue">
+    <th mat-header-cell *matHeaderCellDef> Venue </th>
+    <td mat-cell *matCellDef="let element"> {{element._embedded.venues[0].name}}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="headers"></tr>
+  <tr class="showmoreless" mat-row (click)="handleRowClick(row)" *matRowDef="let row; columns: headers;"></tr>
+</table>

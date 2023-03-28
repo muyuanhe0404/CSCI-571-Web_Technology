@@ -1,4 +1,40 @@
-<div>
-    <p>favorites works!</p>
-    
-</div>
+<hr>
+<table mat-table [dataSource]="data" class="mat-elevation-z8 bg-dark text-light table-striped ">
+
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="#">
+    <th mat-header-cell *matHeaderCellDef> # </th>
+    <td mat-cell *matCellDef="let i = index"> {{ i + 1}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.dates.start.localDate}} {{element.dates.start.localTime}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Event">
+    <th mat-header-cell *matHeaderCellDef> Event </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Catagory">
+    <th mat-header-cell *matHeaderCellDef> Catagory </th>
+    <td mat-cell *matCellDef="let element"> {{element.classifications[0].segment.name}}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Favorite">
+    <th mat-header-cell *matHeaderCellDef> Favorite </th>
+    <td mat-cell *matCellDef="let element"><button (click)="deleteItem(element)"><i class="fa-solid fa-trash fa-xl"></i></button></td>
+  </ng-container>
+  <ng-container matColumnDef="Venue">
+    <th mat-header-cell *matHeaderCellDef> Venue </th>
+    <td mat-cell *matCellDef="let element"> {{element._embedded.venues[0].name}}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="headers"></tr>
+  <tr mat-row  *matRowDef="let row; columns: headers;"></tr>
+</table>

@@ -1,0 +1,13 @@
+.whole-page{
+    background-image: url('./img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100%;
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    /* position: fixed; */
+}
