@@ -1,0 +1,6 @@
+framework module Pods_mobile_search_mobile_searchUITests {
+  umbrella header "Pods-mobile_search-mobile_searchUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
