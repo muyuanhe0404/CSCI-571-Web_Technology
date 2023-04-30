@@ -8,27 +8,22 @@
 import SwiftUI
 
 struct DetailView: View {
+    @StateObject var eventStore: EventStore
     var event: Event?
     var body: some View {
         TabView {
-            EventsView().tabItem {
-                Image(systemName: "1.square.fill")
+            EventsView(eventStore: eventStore, detailStore: DetailStore(id: event!.id ?? ""), event: event!).tabItem {
+                Image(systemName: "note.text")
                 Text("Events")
             }
-            Text("Events").tabItem {
-                Image(systemName: "2.square.fill")
+            ArtistView(event: event).tabItem {
+                Image(systemName: "guitars")
                 Text("Artists/Team")
             }
-            Text("Events").tabItem {
-                Image(systemName: "3.square.fill")
+            VenueView(venue: event?.embedded?.venues?.first, title: event?.name).tabItem {
+                Image(systemName: "location.fill")
                 Text("Venue")
             }
         }
-    }
-}
-
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView()
     }
 }

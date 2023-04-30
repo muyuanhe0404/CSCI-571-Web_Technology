@@ -10,6 +10,15 @@
 		2BEF576729ED7B1D000EF5FC /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF576629ED7B1D000EF5FC /* DetailView.swift */; };
 		2BEF576929ED7BB5000EF5FC /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF576829ED7BB5000EF5FC /* EventsView.swift */; };
 		2BEF576F29EFAE9E000EF5FC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF576E29EFAE9E000EF5FC /* Model.swift */; };
+		2BEF578229F2C019000EF5FC /* VenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF578129F2C019000EF5FC /* VenueView.swift */; };
+		2BEF578429F2C3AC000EF5FC /* ArtistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF578329F2C3AC000EF5FC /* ArtistView.swift */; };
+		2BEF578729F2D271000EF5FC /* mobile-search-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BEF578629F2D271000EF5FC /* mobile-search-Info.plist */; };
+		2BEF578929F2DEE6000EF5FC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF578829F2DEE6000EF5FC /* MapView.swift */; };
+		2BEF578B29F3A93F000EF5FC /* FavouriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF578A29F3A93F000EF5FC /* FavouriteListView.swift */; };
+		2BEF578D29F3A968000EF5FC /* CommonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF578C29F3A968000EF5FC /* CommonListView.swift */; };
+		2BEF578F29F3AF20000EF5FC /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF578E29F3AF20000EF5FC /* Cache.swift */; };
+		2BEF579129F3C34E000EF5FC /* AutoCompleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF579029F3C34E000EF5FC /* AutoCompleteObject.swift */; };
+		2BEF579329F3D428000EF5FC /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF579229F3D428000EF5FC /* Toast.swift */; };
 		7C7C3CE656E938210F6EAB91 /* Pods_mobile_search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C49FA9BEA25ABC30D256F22 /* Pods_mobile_search.framework */; };
 		8E7C35ADBA433B2944328369 /* Pods_mobile_searchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF0DCC252CD2DB4A17B19E8 /* Pods_mobile_searchTests.framework */; };
 		A0314D02D73BDB0C911A5676 /* Pods_mobile_search_mobile_searchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABEB236D19136D711328D3A /* Pods_mobile_search_mobile_searchUITests.framework */; };
@@ -47,6 +56,16 @@
 		2BEF576629ED7B1D000EF5FC /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2BEF576829ED7BB5000EF5FC /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
 		2BEF576E29EFAE9E000EF5FC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		2BEF578129F2C019000EF5FC /* VenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueView.swift; sourceTree = "<group>"; };
+		2BEF578329F2C3AC000EF5FC /* ArtistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistView.swift; sourceTree = "<group>"; };
+		2BEF578529F2D271000EF5FC /* mobile_search.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = mobile_search.entitlements; sourceTree = "<group>"; };
+		2BEF578629F2D271000EF5FC /* mobile-search-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "mobile-search-Info.plist"; sourceTree = "<group>"; };
+		2BEF578829F2DEE6000EF5FC /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		2BEF578A29F3A93F000EF5FC /* FavouriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListView.swift; sourceTree = "<group>"; };
+		2BEF578C29F3A968000EF5FC /* CommonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonListView.swift; sourceTree = "<group>"; };
+		2BEF578E29F3AF20000EF5FC /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		2BEF579029F3C34E000EF5FC /* AutoCompleteObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteObject.swift; sourceTree = "<group>"; };
+		2BEF579229F3D428000EF5FC /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		5C49FA9BEA25ABC30D256F22 /* Pods_mobile_search.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobile_search.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ABEB236D19136D711328D3A /* Pods_mobile_search_mobile_searchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobile_search_mobile_searchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE0C0554CE9361B13A1FC00 /* Pods-mobile_searchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile_searchTests.debug.xcconfig"; path = "Target Support Files/Pods-mobile_searchTests/Pods-mobile_searchTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +148,8 @@
 		E61A8B6429E6521100832BF8 /* mobile_search */ = {
 			isa = PBXGroup;
 			children = (
+				2BEF578529F2D271000EF5FC /* mobile_search.entitlements */,
+				2BEF578629F2D271000EF5FC /* mobile-search-Info.plist */,
 				E61A8B6529E6521100832BF8 /* mobile_searchApp.swift */,
 				E61A8B6729E6521100832BF8 /* ContentView.swift */,
 				E61A8B6929E6521300832BF8 /* Assets.xcassets */,
@@ -137,6 +158,14 @@
 				2BEF576629ED7B1D000EF5FC /* DetailView.swift */,
 				2BEF576829ED7BB5000EF5FC /* EventsView.swift */,
 				2BEF576E29EFAE9E000EF5FC /* Model.swift */,
+				2BEF578129F2C019000EF5FC /* VenueView.swift */,
+				2BEF578329F2C3AC000EF5FC /* ArtistView.swift */,
+				2BEF578829F2DEE6000EF5FC /* MapView.swift */,
+				2BEF578A29F3A93F000EF5FC /* FavouriteListView.swift */,
+				2BEF578C29F3A968000EF5FC /* CommonListView.swift */,
+				2BEF578E29F3AF20000EF5FC /* Cache.swift */,
+				2BEF579029F3C34E000EF5FC /* AutoCompleteObject.swift */,
+				2BEF579229F3D428000EF5FC /* Toast.swift */,
 			);
 			path = mobile_search;
 			sourceTree = "<group>";
@@ -197,6 +226,8 @@
 			dependencies = (
 			);
 			name = mobile_search;
+			packageProductDependencies = (
+			);
 			productName = mobile_search;
 			productReference = E61A8B6229E6521100832BF8 /* mobile_search.app */;
 			productType = "com.apple.product-type.application";
@@ -272,6 +303,8 @@
 				Base,
 			);
 			mainGroup = E61A8B5929E6521100832BF8;
+			packageReferences = (
+			);
 			productRefGroup = E61A8B6329E6521100832BF8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -290,6 +323,7 @@
 			files = (
 				E61A8B6D29E6521300832BF8 /* Preview Assets.xcassets in Resources */,
 				E61A8B6A29E6521300832BF8 /* Assets.xcassets in Resources */,
+				2BEF578729F2D271000EF5FC /* mobile-search-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,9 +454,17 @@
 				E61A8B9029E9C18C00832BF8 /* APIHandler.swift in Sources */,
 				2BEF576929ED7BB5000EF5FC /* EventsView.swift in Sources */,
 				2BEF576729ED7B1D000EF5FC /* DetailView.swift in Sources */,
+				2BEF578D29F3A968000EF5FC /* CommonListView.swift in Sources */,
 				2BEF576F29EFAE9E000EF5FC /* Model.swift in Sources */,
+				2BEF579129F3C34E000EF5FC /* AutoCompleteObject.swift in Sources */,
 				E61A8B6829E6521100832BF8 /* ContentView.swift in Sources */,
+				2BEF578429F2C3AC000EF5FC /* ArtistView.swift in Sources */,
+				2BEF578B29F3A93F000EF5FC /* FavouriteListView.swift in Sources */,
+				2BEF578229F2C019000EF5FC /* VenueView.swift in Sources */,
+				2BEF578929F2DEE6000EF5FC /* MapView.swift in Sources */,
+				2BEF578F29F3AF20000EF5FC /* Cache.swift in Sources */,
 				E61A8B6629E6521100832BF8 /* mobile_searchApp.swift in Sources */,
+				2BEF579329F3D428000EF5FC /* Toast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,12 +621,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = mobile_search/mobile_search.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mobile_search/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -610,12 +654,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = mobile_search/mobile_search.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mobile_search/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

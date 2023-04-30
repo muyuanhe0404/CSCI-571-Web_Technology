@@ -9,6 +9,7 @@ const cliID = 'bb4f6b414a894874b364ff8f4b4307b4'
 const clisecret = 'a6ff3a3c85d144fb8d30f5a181415943'
 const ipbase ='https://ipinfo.io?token='
 const iptoken ='c25957d696b6c9'
+const suggest = 'https://app.ticketmaster.com/discovery/v2/suggest?apikey=fCNma7FdtKa4QowUHCLWABSDGhxVQO7R'
 app.use(bodyParser.json())
 
 var geohash = require('ngeohash');
@@ -128,6 +129,11 @@ app.get('/api/ticketmaster', async (req, res) => {
     console.log('geolng', Number(req.query.lng));
     console.log('geo', geo);
     const data = await fetch(`${URL}&keyword=${req.query.keyword}&segmentId=${req.query.catagory}&radius=${parseInt(req.query.distance)}&geoPoint=${geo}`).then(data => data.json());
+    res.status(200).json(data)
+})
+
+app.get('/api/suggestion', async (req, res) => {
+    const data = await fetch(`${URL}&keyword=${req.query.keyword}`).then(data => data.json());
     res.status(200).json(data)
 })
 
