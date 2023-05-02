@@ -12,28 +12,35 @@ import Kingfisher
 class ViewModel: ObservableObject {
     
     // model
-    @Published var items: [ArtistElement]?
+    @Published var items: [ArtistElement] = []
     @Published var tracks: [String: SearchTrackResp] = [:]
     
     var subscriptions = Set<AnyCancellable>()
+    var temp: Int = 0
+    var event: Event?
     
     func getData(event: Event?) {
-        APIHandler.sharedInstance.searchArtist(artist: event?.embedded?.attractions?.first?.name ?? "") { resp in
+        self.event = event
+        guard temp < event?.embedded?.attractions?.count ?? 0 else {
+            return
+        }
+        APIHandler.sharedInstance.searchArtist(artist: event?.embedded?.attractions?[temp].name ?? "") { resp in
             DispatchQueue.main.async {
-                self.items = resp?.body?.artists?.items
-            }
-            resp?.body?.artists?.items?.forEach({ artist in
-                APIHandler.sharedInstance.getAlbum(id: artist.id ?? "") { resp in
-                    DispatchQueue.main.async {
-                        if let resp = resp {
-                            self.tracks[artist.id ?? ""] = resp
+                if let item = resp?.body?.artists?.items?.first {
+                    self.temp+=1
+                    self.items.append(item)
+                    self.getData(event: self.event)
+                    APIHandler.sharedInstance.getAlbum(id: item.id ?? "") { resp in
+                        DispatchQueue.main.async {
+                            if let resp = resp {
+                                self.tracks[item.id ?? ""] = resp
+                            }
                         }
                     }
                 }
-            })
+            }
             
         }
-        
     }
     
 }
@@ -43,7 +50,7 @@ struct ArtistView: View {
     @ObservedObject var viewModel = ViewModel()
     var body: some View {
         if (event?.classifications?[0].segment?.name == "Music") {
-            if (viewModel.items?.count ?? 0) > 0 {
+            if (viewModel.items.count) > 0 {
                 List {
                     ForEach(viewModel.items ?? []) { artist in
                         ZStack {
