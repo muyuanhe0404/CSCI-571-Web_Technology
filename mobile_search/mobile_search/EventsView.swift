@@ -87,7 +87,7 @@ struct EventsView: View {
                     .font(.title3)
             }
             HStack {
-                Text("\(event?.priceRanges?.first?.min ?? 0)-\(event?.priceRanges?.first?.max ?? 0)")
+                Text("\(Int(event?.priceRanges?.first?.min ?? 0))-\(Int(event?.priceRanges?.first?.max ?? 0))")
                     .foregroundColor(Color.gray)
                 Spacer()
                 Button("\(event?.dates?.status?.code ?? "")", action: {}).frame(width: 120.0, height: 30.0).background(getColor(status: event?.dates?.status?.code ?? "")).foregroundColor(Color.white).cornerRadius(8)
